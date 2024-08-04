@@ -1,0 +1,32 @@
+:root {
+  /* Цвета, используемый в проекте */
+  --background-color: #ffffff;
+  --content-body-color: #eaeaea;
+  --content-title-color: black;
+  --logout-hovered-color: black;
+  --green-button-background-color: #198754;
+
+  --grey-button-color: #6c757d;
+  --grey-button-disabled-color: #b4b4b4;
+  --grey-button-hovered-color: #d7d7d7;
+
+  --grey-stroke-hovered-color: #989898;
+  --form-background-color: #e8e8e8;
+  --form-background-hovered-color: #e5e5e5;
+  --disabled-form-field-color: #dadada;
+  --disabled-form-color: #d7d7d7;
+  --recommendation-hovered-color: #a5ffb5;
+  --forget-password-link-color: #7ca9ff;
+  --milk-background-color: #e7e7e7;
+  --form-stroke-color: #00a3ff;
+  --table-cell-background-color: #f8f8f8;
+  --menu-item-blocked-color: #d9d9d9;
+  --remove-button-background-color: #f50808;
+  --start-learn-button-background-color: #cea100;
+  --learn-completed-background-color: #19ce7a;
+  --category-badge-background-color: #ffc107;
+  --error-action-color: red;
+
+  /* Шрифты */
+  --base-font-family: 'Inter';
+}
