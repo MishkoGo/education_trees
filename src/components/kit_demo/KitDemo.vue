@@ -12,6 +12,7 @@ import FormsFieldsSection from '@/components/kit_demo/FormsFieldsSection.vue'
 import BaseSwitchField from '@/components/forms_fields/BaseSwitchField.vue'
 import { useAuthStore } from '@/stores/auth.js'
 import { mapState, mapActions } from 'pinia'
+import { mock_external_request } from '@/utils/request-mocks'
 </script>
 
 <script>
@@ -20,11 +21,8 @@ export default {
     async mock_external_request(loading_mark_name) {
       console.log('Имитация внешнего запроса', loading_mark_name)
       this[loading_mark_name] = true
-      const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
-      // Имитация ожидания внутренних компонентов или ответа внешних систем
-      await sleep(2000)
+      await mock_external_request()
       this[loading_mark_name] = false
-      console.log('Запрос отработан')
     },
     async boolean_mark_processing(loading_mark_name) {
       await this.mock_external_request(loading_mark_name)
@@ -58,9 +56,3 @@ export default {
     <FormsFieldsSection />
   </div>
 </template>
-
-<style scoped>
-.ui-kit {
-  padding: 50px;
-}
-</style>

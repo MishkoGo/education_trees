@@ -14,15 +14,3 @@
     </v-container>
   </v-container>
 </template>
-<style scoped>
-.footer {
-  position: relative;
-  background-color: #c2c2c2;
-  position: fixed;
-  border-top: 1px solid;
-  bottom: 0;
-}
-a {
-  color: black;
-}
-</style>

@@ -15,27 +15,24 @@ import TopMenu from '@/components/navigation/TopMenu.vue'
 import BigSignUpButton from '@/components/navigation/BigSignUpButton.vue'
 import { useAuthStore } from '@/stores/auth.js'
 import { mapState } from 'pinia'
+import { mock_external_request } from '@/utils/request-mocks'
 </script>
 
 <script>
 export default {
   methods: {
-    async mock_external_request(loading_mark_name) {
-      console.log('Имитация внешнего запроса', loading_mark_name)
-      this[loading_mark_name] = true
-      const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
-      // Имитация ожидания внутренних компонентов или ответа внешних систем
-      await sleep(2000)
-      this[loading_mark_name] = false
-      console.log('Запрос отработан')
+    async processButton(button_data) {
+      button_data.isLoading = true
+      await mock_external_request()
+      button_data.isLoading = false
     }
   },
   data() {
     return {
-      login_button_loading: false,
-      signup_button_loading: false,
-      signup_landing_button_loading: false,
-      logout_button_loading: false
+      loginButton: { isLoading: false },
+      signupButton: { isLoading: false },
+      logoutButton: { isLoading: false },
+      bigSignupButton: { isLoading: false }
     }
   },
   computed: {
@@ -55,8 +52,8 @@ export default {
       <ElementShowCase :title="$t('buttons.login')">
         <template v-slot:element>
           <LoginButton
-            :isLoading="login_button_loading"
-            @click="mock_external_request('login_button_loading')"
+            :isLoading="loginButton.isLoading"
+            @click="processButton(loginButton)"
           ></LoginButton>
         </template>
       </ElementShowCase>
@@ -64,25 +61,25 @@ export default {
       <ElementShowCase :title="$t('buttons.sign_up')">
         <template v-slot:element>
           <SignupButton
-            :isLoading="signup_button_loading"
-            @click="mock_external_request('signup_button_loading')"
+            :isLoading="signupButton.isLoading"
+            @click="processButton(signupButton)"
           ></SignupButton>
         </template>
       </ElementShowCase>
       <ElementShowCase :title="$t('buttons.sign_up')">
         <template v-slot:element>
           <BigSignUpButton
-            :isLoading="signup_landing_button_loading"
+            :isLoading="bigSignupButton.isLoading"
             :title="$t('buttons.sign_up')"
-            @click="mock_external_request('signup_landing_button_loading')"
+            @click="processButton(bigSignupButton)"
           ></BigSignUpButton>
         </template>
       </ElementShowCase>
       <ElementShowCase :title="$t('buttons.logout')">
         <template v-slot:element>
           <LogoutButton
-            :isLoading="logout_button_loading"
-            @click="mock_external_request('logout_button_loading')"
+            :isLoading="logoutButton.isLoading"
+            @click="processButton(logoutButton)"
           ></LogoutButton>
         </template>
       </ElementShowCase>
@@ -90,18 +87,13 @@ export default {
         <template v-slot:element>
           <AuthorizationButtons
             :isAuthorized="getMockIsAuthorized"
-            :login_button_loading="login_button_loading"
-            :logout_button_loading="logout_button_loading"
-            :signup_button_loading="signup_button_loading"
-            @login_button_click="mock_external_request('login_button_loading')"
-            @logout_button_click="mock_external_request('logout_button_loading')"
-            @signup_button_click="mock_external_request('signup_button_loading')"
+            :login_button_loading="loginButton.isLoading"
+            :logout_button_loading="logoutButton.isLoading"
+            :signup_button_loading="signupButton.isLoading"
+            @login_button_click="processButton(logoutButton)"
+            @logout_button_click="processButton(logoutButton)"
+            @signup_button_click="processButton(signupButton)"
           ></AuthorizationButtons>
-        </template>
-      </ElementShowCase>
-      <ElementShowCase :title="$t('ui_kit.top_menu')">
-        <template v-slot:element>
-          <TopMenu></TopMenu>
         </template>
       </ElementShowCase>
     </template>

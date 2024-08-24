@@ -65,5 +65,3 @@ export default {
     @click="checkValue"
   ></v-switch>
 </template>
-
-<style scoped></style>

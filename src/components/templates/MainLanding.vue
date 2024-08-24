@@ -2,18 +2,15 @@
 import BigSignUpButton from '@/components/navigation/BigSignUpButton.vue'
 import { useAuthStore } from '@/stores/auth.js'
 import { mapState } from 'pinia'
+import { mock_external_request } from '@/utils/request-mocks'
 </script>
 <script>
 export default {
   methods: {
-    async mock_external_request(loading_mark_name) {
-      console.log('Имитация внешнего запроса', loading_mark_name)
+    async processButton(loading_mark_name) {
       this[loading_mark_name] = true
-      const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
-      // Имитация ожидания внутренних компонентов или ответа внешних систем
-      await sleep(2000)
+      await mock_external_request()
       this[loading_mark_name] = false
-      console.log('Запрос отработан')
     }
   },
   data() {
@@ -39,18 +36,8 @@ export default {
       <BigSignUpButton
         title="Зарегистрироваться"
         :isLoading="signup_landing_button_loading"
-        @click="mock_external_request('signup_landing_button_loading')"
+        @click="processButton('signup_landing_button_loading')"
       />
     </v-container>
   </v-container>
 </template>
-
-<style scoped>
-h1 {
-  font-size: 50px;
-  text-align: center;
-}
-p {
-  font-size: 25px;
-}
-</style>

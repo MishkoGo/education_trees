@@ -15,6 +15,10 @@ defineProps({
   isDisabled: {
     type: Boolean,
     required: false
+  },
+  buttonType: {
+    type: String,
+    required: false
   }
 })
 </script>
@@ -45,19 +49,8 @@ export default {
     variant="outlined"
     class="button-style"
     :disabled="isDisabledComputed"
+    :type="buttonType"
   >
     {{ title }}
   </v-btn>
 </template>
-
-<style scoped>
-@media (max-width: 750px) {
-  .button-style {
-    margin-bottom: 5px;
-  }
-}
-
-.button-style:hover {
-  background-color: v-bind(hovered_color);
-}
-</style>

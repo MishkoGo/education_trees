@@ -37,17 +37,3 @@ export default {
     <div class="color-square" :style="{ 'background-color': reprepsentedColor }"></div>
   </fieldset>
 </template>
-
-<style scoped>
-.color-square {
-  width: 75px;
-  height: 75px;
-  text-align: center;
-  margin: auto;
-  border: 2px solid black;
-}
-.color-element-case {
-  text-align: center;
-  padding: 10px;
-}
-</style>

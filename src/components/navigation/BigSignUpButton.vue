@@ -39,10 +39,3 @@ export default {
     </v-btn>
   </v-hover>
 </template>
-
-<style scoped>
-.button-style:hover {
-  background-color: #43a047;
-  color: #fff;
-}
-</style>

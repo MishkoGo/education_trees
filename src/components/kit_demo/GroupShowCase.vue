@@ -20,16 +20,3 @@ defineProps({
     </div>
   </fieldset>
 </template>
-<style scoped>
-.wrap {
-  display: flex;
-  flex-wrap: wrap;
-}
-.group-case {
-  border: 2px solid grey;
-  max-width: 80%;
-}
-legend {
-  font-size: 20px;
-}
-</style>

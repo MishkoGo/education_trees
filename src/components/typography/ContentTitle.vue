@@ -12,10 +12,3 @@ defineProps({
     <h1 class="content-title">{{ title }}</h1>
   </div>
 </template>
-
-<style scoped>
-.content-title {
-  font-family: var(--base-font-family);
-  font-size: 30px;
-}
-</style>

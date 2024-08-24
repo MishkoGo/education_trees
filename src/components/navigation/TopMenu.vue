@@ -26,7 +26,7 @@ export default {
     ...mapState(useAuthStore, ['getMockIsAuthorized', 'getIsAuthorized']),
     isAuthorized() {
       if (this.isMock) {
-        return this.getMockIsAuthorized()
+        return this.getMockIsAuthorized
       }
       return this.getIsAuthorized
     }
@@ -51,11 +51,4 @@ export default {
     </v-row>
   </v-container>
 </template>
-<style scoped>
-.top-menu {
-  background-color: var(--milk-background-color);
-  border-bottom: 1px dashed;
-  position: fixed;
-  z-index: 1;
-}
-</style>
+
