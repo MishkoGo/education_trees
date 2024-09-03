@@ -1,14 +1,21 @@
 :root {
   /* Цвета, используемый в проекте */
+  --black: #000000;
+  --green: #008000;
+  --light-grey: #ced4da;
   --background-color: #ffffff;
   --content-body-color: #eaeaea;
   --content-title-color: black;
   --logout-hovered-color: black;
   --green-button-background-color: #198754;
-
+  --background-color-container: #FAFAFA;
+  --footer-background: #c2c2c2;
+ 
   --grey-button-color: #6c757d;
   --grey-button-disabled-color: #b4b4b4;
   --grey-button-hovered-color: #d7d7d7;
+  --buttons-global-background: #43a047;
+  --button: #bfbfbf00;
 
   --grey-stroke-hovered-color: #989898;
   --form-background-color: #e8e8e8;
@@ -26,6 +33,9 @@
   --learn-completed-background-color: #19ce7a;
   --category-badge-background-color: #ffc107;
   --error-action-color: red;
+
+  --success-form-color: #198754;
+  --label-forget-password: #7ca9ff;
 
   /* Шрифты */
   --base-font-family: 'Inter';

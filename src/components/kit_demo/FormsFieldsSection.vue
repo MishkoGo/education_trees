@@ -17,6 +17,7 @@ import WindowSuccessRegistration from '../forms_fields/WindowSuccessRegistration
 import WindowPasswordLogin from '../forms_fields/WindowPasswordLogin.vue'
 import FormLogin from '../forms_fields/FormLogin.vue'
 import FormForgetPassword from '../forms_fields/FormForgetPassword.vue'
+import BaseEmailField from '../forms_fields/BaseEmailField.vue'
 </script>
 
 <script>
@@ -64,6 +65,13 @@ export default {
           ></BaseSwitchField>
           {{ form_data.boolean_switch_atom }}
         </template>
+      </ElementShowCase>
+      <ElementShowCase title="Поля формы">
+        <template v-slot:element>
+          <BaseEmailField></BaseEmailField>
+          
+        </template>
+        
       </ElementShowCase>
       <ElementShowCase title="Регистрация">
         <template v-slot:element>

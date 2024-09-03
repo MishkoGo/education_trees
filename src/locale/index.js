@@ -38,12 +38,14 @@ const locale_i18n = createI18n({
           name_surname_title: 'Имя и Фамилия (необязательно)',
         },
         errors: {
-          required_field: 'Поле обязательно',
-          invalid_email: 'Поле обязательное',
-          required_email: 'Поле обязателен',
+          required_field: 'Поле обязательное',
+          invalid_email: 'Введите корректный адрес электронной почты.',
+          required_email: 'Поле обязательное',
           invalid_password: 'Пароль неправильный',
           password_mismatch: 'Пароли не совпадают',
-          required_password: 'Поле обязателен',
+          required_password: 'Поле обязательное',
+          
+    
         },
         placeholders: {
           email: 'Введите вашу почту',

@@ -1,111 +1,125 @@
 <script>
 export default {
- data() {
+  data() {
     return {
+      email: '',
+      password: '',
+      errors: {
         email: '',
         password: '',
-        errors: {
-            email: '',
-            password: '',
+      },
+      isSubmitting: false, 
+      rules: {
+        required: value => !!value || this.$t('forms.errors.required_field'),
+        email: value => {
+          if (!value) {
+            return this.$t('forms.errors.required_field');
+          }
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return emailPattern.test(value) || this.$t('forms.errors.invalid_email');
         },
-        isSubmitting: false, 
-        rules: {
-            required: value => !!value || this.$t('forms.errors.required_field'),
-            email: value => !!value || this.$t('forms.errors.required_email'),
-            password: value => !!value || this.$t('forms.errors.required_password'),
-        }
+        password: value => !!value || this.$t('forms.errors.required_password'),
+      }
     }
- },
- computed: {
-    isFormValid() {
-        return this.email !== '' && this.password !== '';
+  },
+  watch: {
+    email(value) {
+      const emailError = this.rules.email(value);
+      this.errors.email = emailError === true ? '' : emailError;
+    },
+    password(value) {
+      const passwordError = this.rules.password(value);
+      this.errors.password = passwordError === true ? '' : passwordError;
     }
- },
- methods: {
+  },
+  methods: {
     validateForm() {
-        this.errors.email = !this.rules.required(this.email) ? this.rules.required(this.email) : '';
-        this.errors.password = !this.rules.required(this.password) ? this.rules.required(this.password) : '';
+      let isValid = true;
 
-        return !this.errors.email && !this.errors.password;
+      const emailError = this.rules.email(this.email);
+      if (emailError !== true) {
+        this.errors.email = emailError;
+        isValid = false;
+      } else {
+        this.errors.email = '';
+      }
+
+      const passwordError = this.rules.password(this.password);
+      if (passwordError !== true) {
+        this.errors.password = passwordError;
+        isValid = false;
+      } else {
+        this.errors.password = '';
+      }
+
+      return isValid;
     },
     async onSubmit() {
-        if (this.validateForm()) {
-            this.isSubmitting = true; 
+      if (this.validateForm()) {
+        this.isSubmitting = true;
+        try {
+          await new Promise(resolve => setTimeout(resolve, 2000));
+          console.log('Форма отправлена:', {
+            email: this.email,
+            password: this.password
+          });
 
-            try {
-                await new Promise(resolve => setTimeout(resolve, 2000));
+          this.$refs.form.$el.querySelectorAll('input').forEach(input => input.disabled = true);
+          this.$refs.submitBtn.disabled = true;
 
-                console.log('Форма отправлена:', {
-                    email: this.email
-                });
-
-            } catch (error) {
-                console.error('Отправка формы не удалась:', error);
-            } finally {
-                this.isSubmitting = false; 
-            }
-        } else {
-            console.log('Проверка формы не удалась. Пожалуйста, заполните все обязательные поля.');
+        } catch (error) {
+          console.error('Отправка формы не удалась:', error);
+        } finally {
+          this.isSubmitting = false; 
         }
+      }
     }
- }
+  }
 };
 </script>
 
-<template>
-    <v-container class="form_login">
-        <h3>{{ $t('forms.labels.login') }}</h3>
-        <v-form @submit.prevent="onSubmit" ref="form">
-            <p>{{ $t('forms.labels.email') }}</p>
-            <v-text-field
-                v-model="email"
-                :label="$t('forms.labels.email')"
-                type="email"
-                :rules="[rules.required, rules.email]"
-                :disabled="isSubmitting"  
-                required>
-            </v-text-field>
-            <v-alert
-                v-if="errors.email"
-                type="error"
-                class="mt-2"
-            >
-            {{ errors.email }}
-            </v-alert>
-            <p>{{ $t('forms.labels.password_title') }}</p>
-            <v-text-field
-                v-model="password"
-                :label="$t('forms.labels.password_title')"
-                type="password"
-                :rules="[rules.required, rules.password]"
-                :disabled="isSubmitting"  
-                required>
-            </v-text-field>
-            <v-alert
-                v-if="errors.password"
-                type="error"
-                class="mt-3"
-            >
-            {{ errors.password }}
-            </v-alert>
 
-            <v-row justify="space-between">
-                <v-col class="button-log">
-                    <v-btn
-                        :loading="isSubmitting"
-                        variant="outlined"
-                        class="button-style"
-                        :disabled="!isFormValid || isSubmitting" 
-                        :type="buttonType"
-                    >
-                        {{ $t('forms.buttons.submit_login') }}
-                    </v-btn>
-                    
-                </v-col>
-                <v-col class="forget-password">
-                    <a href="#">{{ $t('forms.buttons.forget_password') }}</a>
-                </v-col>
-            </v-row>
-        </v-form>
-    </v-container>
+<template>
+  <v-container class="form_login">
+    <h3>{{ $t('forms.labels.login') }}</h3>
+    <v-form @submit.prevent="onSubmit" ref="form">
+      <p>{{ $t('forms.labels.email') }}</p>
+      <v-text-field
+        v-model="email"
+        :label="$t('forms.labels.email')"
+        type="email"
+        :disabled="isSubmitting"
+        required
+      />
+      <p v-if="errors.email && !isSubmitting" class="error-text">{{ errors.email }}</p>
+
+      <p>{{ $t('forms.labels.password_title') }}</p>
+      <v-text-field
+        v-model="password"
+        :label="$t('forms.labels.password_title')"
+        type="password"
+        :disabled="isSubmitting"
+        required
+      />
+      <p v-if="errors.password && !isSubmitting" class="error-text">{{ errors.password }}</p>
+
+      <v-row justify="space-between">
+        <v-col class="button-log">
+          <v-btn
+            ref="submitBtn"
+            :loading="isSubmitting"
+            variant="outlined"
+            class="button-style"
+            @click="onSubmit"
+            :disabled="isSubmitting"
+          >
+            {{ $t('forms.buttons.submit_login') }}
+          </v-btn>
+        </v-col>
+        <v-col class="forget-password">
+          <a href="#">{{ $t('forms.buttons.forget_password') }}</a>
+        </v-col>
+      </v-row>
+    </v-form>
+  </v-container>
 </template>
