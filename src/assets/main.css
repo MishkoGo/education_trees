@@ -17,6 +17,91 @@
 .form-title {
   margin: 25px 0px 25px 25px;
 }
+.photo img {
+  width: 100px;
+}
+.info-vladelech {
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+  align-items: center;
+}
+.info-vladelech img {
+  width: 25px;
+}
+
+.photo {
+  border: 1px solid black;
+}
+.v-col.v-col-12.inputs {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 20px;
+}
+button.green {
+  border: 2px solid rgb(25 135 84) !important;
+  color: rgba(25, 135, 84, 1);
+}
+.info-block button {
+  border: 2px solid rgba(108, 117, 125, 1);
+  padding: 4px 10px;
+  font-size: 12px;
+  display: flex;
+  gap: 5px;
+  border-radius: 6px;
+  box-shadow: 0px 1px 7px #938d8d;
+  box-shadow: blue;
+  align-items: center;
+}
+.info-block {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 30px;
+}
+.info p {
+  font-size: 14px;
+  width: auto;
+  color: rgba(0, 0, 0, 1);
+  line-height: 19px;
+  margin-bottom: 1%;
+}
+.info-vladelech a {
+  font-size: 13px;
+}
+p.details_text {
+  font-size: 15px;
+}
+.v-window.v-theme--light.v-tabs-window {
+  border: 1px solid green;
+}
+button.v-btn.v-tab-item--selected.v-tab--selected.v-theme--light.text-primary.v-btn--density-default.v-btn--size-default.v-btn--variant-text.v-tab {
+  color: green !important;
+  font-size: 11px !important;
+  padding: 10px !important;
+}
+.card_1 {
+  border-bottom: 1px solid;
+  width: 24%;
+  border-right: 1px solid;
+}
+.card {
+  display: flex;
+  gap: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0px 5px 11px #979797;
+}
+.card:hover {
+  display: flex;
+  gap: 20px;
+  border: 3px solid rgba(25, 135, 84, 1);
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0px 5px 11px #979797;
+}
 .form-sheet {
   background: transparent;
   max-width: 500px;
@@ -24,7 +109,48 @@
 .form-title h2 {
   font-size: 20px;
 }
-
+.global {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.no {
+  display: none;
+}
+.title h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+} 
+button.btn.button-two {
+  background: rgba(239, 239, 239, 1);
+  border-radius: 3px;
+}
+button.add {
+  font-size: 12px;
+  color: green;
+  border-radius: 6px;
+  height: 30px;
+  font-weight: bold;
+  gap: 5px;
+  display: flex;
+  padding: 3px 12px;
+  border: 2px solid rgba(25, 135, 84, 1);
+  align-items: center;
+}
+.primary {
+  color: #ffffff;
+  background: rgba(25, 135, 84, 1);
+  padding: 8px 20px;
+  font-size: 15px;
+  border-radius: 3px;
+}
+button.btn {
+  padding: 6px 10px;
+}
+.danger {
+  color: #e53935;
+}
 .v-container.v-locale--is-ltr h3 {
   text-align: center;
 }

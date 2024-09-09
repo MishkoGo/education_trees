@@ -44,8 +44,6 @@ const locale_i18n = createI18n({
           invalid_password: 'Пароль неправильный',
           password_mismatch: 'Пароли не совпадают',
           required_password: 'Поле обязательное',
-          
-    
         },
         placeholders: {
           email: 'Введите вашу почту',

@@ -5,7 +5,7 @@
 import GroupShowCase from '../kit_demo/GroupShowCase.vue'
 import ElementShowCase from '@/components/kit_demo/ElementShowCase.vue'
 
-import Logo from '@/components/navigation/Logo.vue'
+import Logo from '@/components/navigation/NavLogo.vue'
 import LoginButton from '@/components/navigation/LoginButton.vue'
 import SignupButton from '@/components/navigation/SignupButton.vue'
 import LogoutButton from '@/components/navigation/LogoutButton.vue'

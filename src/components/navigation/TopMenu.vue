@@ -1,6 +1,6 @@
 <script setup>
 import AuthorizationButtons from '@/components/navigation/AuthorizationButtons.vue'
-import Logo from '@/components/navigation/Logo.vue'
+import Logo from '@/components/navigation/NavLogo.vue'
 import { useAuthStore } from '@/stores/auth.js'
 import { mapState } from 'pinia'
 
