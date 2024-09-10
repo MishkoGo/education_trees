@@ -2,17 +2,25 @@
     <div>
        <div class="title" >
              <h3>Мои библиотеки -> Название библиотеки
-                 
              </h3>
-         </div>
-         <br/>
+       </div>
+       <br/>
+       <div class="head-library">
        <h2>Название библиотеки</h2>
-       <v-btn>
+       
+       <v-btn
+       class="add" 
+       >
+       <img src="/src/assets/edit.png"> 
         Изменить
         </v-btn>
-        <v-btn>
+        
+        <v-btn
+        class="delete">
+            <img src="/src/assets/delete.png"> 
             Удалить
             </v-btn>
+        </div>
             <div class="info-vladelech">
             
             <img src="/src/assets/person.png">
