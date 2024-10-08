@@ -1,10 +1,6 @@
 <template>
     <div>
-       <div class="title" >
-             <h3>Мои библиотеки -> Название библиотеки
-             </h3>
-       </div>
-       <br/>
+
        <div class="head-library">
        <h2>Название библиотеки</h2>
        
@@ -21,7 +17,7 @@
             Удалить
             </v-btn>
         </div>
-            <div class="info-vladelech">
+            <div class="info-owner">
             
             <img src="/src/assets/person.png">
             <a href="#">Образовательное учреждение “СШУМГОСИ № 1337”</a>

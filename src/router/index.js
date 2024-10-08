@@ -15,25 +15,38 @@ const router = createRouter({
     },
     {
       path: '/',
-      name: 'root',
-      component: () => import('../views/MainLanding.vue')
+      name: '',
+      component: () => import('../views/MainLanding.vue'),
+      meta: {
+        breadcrumbs: [{ text: 'Главная', to: '/' }]
+      }
     },
     {
       path: '/library',
-      name: 'library',
-      component: () => import('../views/MainLibrary.vue')
+      name: '',
+      component: () => import('../views/MainLibrary.vue'),
+      meta: {
+        breadcrumbs: [{ text: 'Мои библиотеки', to: '/library' }]
+      }
     },
     {
       path: '/add',
-      name: 'add',
-      component: () => import('../views/AddLibrary.vue')
+      name: '> Добавить библиотеку',
+      component: () => import('../views/AddLibrary.vue'),
+      meta: {
+        breadcrumbs: [{ text: 'Мои библиотеки', to: '/library' }]
+      }
     },
     {
       path: '/details',
-      name: 'details',
-      component: () => import('../views/DetailsLibrary.vue')
+      name: '> Название библиотеки',
+      component: () => import('../views/DetailsLibrary.vue'),
+      meta: {
+        breadcrumbs: [{ text: 'Мои библиотеки', to: '/library' }]
+      }
     }
   ]
-})
+});
+
 
 export default router

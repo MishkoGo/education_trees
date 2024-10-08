@@ -1,19 +1,25 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import TopMenu from './components/navigation/TopMenu.vue'
-import AppFooter from './components/navigation/AppFooter.vue'
+import { useRoute } from 'vue-router';
+import TopMenu from './components/navigation/TopMenu.vue';
+import AppFooter from './components/navigation/AppFooter.vue';
+import Breadcrumbs from './components/navigation/Breadcrumbs.vue'; 
 import './assets/main.css';
+
+const route = useRoute(); 
 </script>
 
 <template>
   <div>
     <TopMenu />
     <RouterLink to="/home">Перейти на главную</RouterLink>
-    <v-container class="mb-12"></v-container>
-    <v-container style="border: 1px solid">
+
+    <v-container v-if="route.meta.breadcrumbs && route.meta.breadcrumbs.length">
+      <Breadcrumbs :breadcrumbs="route.meta.breadcrumbs" :current="route.name" />
+    </v-container>
+
+    <v-container class="library_block" >
       <RouterView />
     </v-container>
-    <v-container class="mt-0"></v-container>
 
     <AppFooter />
   </div>

@@ -44,9 +44,7 @@ export default {
 <template>
     <div>
         <div class="title" >
-            <h3>Мои библиотеки  <h4 v-if="active === 'four'">-> Добавить библиотеку</h4>
-                <img src="/src/assets/question.png">
-            </h3>
+           
         </div>
         <br/>
         <div :class="active === 'four' ? 'no' : 'global'">
